@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+//   Li Sing sid:54805981
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>IMDB Movie List</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="app">
+  <form id="search">
+    Search <input name="query" v-model="searchQuery">
+  </form>
+  
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="col in columns" v-on:click = "sorting(col)">  
+                      {{col}}
+                      <div class = "arrow" v-if="col == arrowPos" v-bind:class= "curSortDir == 'asce'? 'arrowUp':'arrowDown'"></div>
+                      
+                  </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="row in filteredData">
+                  <td>{{row.title}}</td>
+                  <td>{{row.artist}}</td>
+                  <td>${{row.price}}</td>
+                  <td>{{row.rank}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+          <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+          <script src="script.js"></script>
+    </body>
+</html>
